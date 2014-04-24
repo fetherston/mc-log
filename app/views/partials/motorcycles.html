@@ -3,14 +3,39 @@
 <ul id="machines" ng-show="machines">
     <li ng-repeat="machine in machines | orderByPriority">
     	<img width="100" class="machine-img" src="images/default-mc-image.jpg">
-    	{{machine.year}} {{machine.make.name}} {{machine.model}} {{machine.miles | number}} miles <a href="" ng-click="edit(machine)">edit</a> <a ng-click="deleteMachine(machine.$id)" href="">delete</a>
+    	{{machine.year}} {{machine.make.name}} {{machine.model}} {{machine.miles | number}} miles <a href="" ng-click="edit(machine)" data-toggle="modal" data-target="#myModal">edit</a> <a ng-click="deleteMachine(machine.$id)" href="">delete</a>
     </li>
 </ul>
-<form id="add-machine-form">
-  <input placeholder="Year" ng-model="activeModel.year">
-  <select name="make" ng-model="activeModel.make" ng-options="m.value for m in makes | orderByPriority">
-  </select>
-  <input type="text" placeholder="Model..." ng-model="activeModel.model">
-  <input type="number" placeholder="Miles..." ng-model="activeModel.miles">
-  <button type="submit" ng-click="saveModel()">Save</button>
-</form>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Add</button>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Motorcycle details</h4>
+      </div>
+      <form class="form-inline" id="add-machine-form">
+        <div class="modal-body">
+            <fieldset class="form-group">
+              <input class="form-control" placeholder="Year" ng-model="activeModel.year">
+            </fieldset>
+            <fieldset class="form-group">
+              <select class="form-control" name="make" ng-model="activeModel.make" ng-options="m.value for m in makes | orderByPriority">
+              </select>
+            </fieldset>
+            <fieldset class="form-group">
+              <input class="form-control" type="text" placeholder="Model..." ng-model="activeModel.model">
+            </fieldset>
+            <fieldset class="form-group">
+              <input class="form-control" type="number" placeholder="Miles..." ng-model="activeModel.miles">
+            </fieldset>          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" type="submit" data-dismiss="modal" ng-click="saveModel()">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -21,9 +21,16 @@
 	</tbody>
 </table>
 
-<form>
-  <input placeholder="Task..." ng-model="activeEntry.task" required>
-  <input placeholder="Date..." ng-model="activeEntry.date" type="date" required>
-  <input placeholder="Miles..." ng-model="activeEntry.miles" type="number">
-  <button type="submit" ng-click="addLog()">Save</button>
+<form class="form-inline">
+  <div class="form-group">
+	  <input class="form-control" placeholder="Task..." ng-model="activeEntry.task" required>
+	</div>
+	<div class="form-group">
+	  <input class="form-control" placeholder="Date..." ng-model="activeEntry.date" type="date" required>
+	</div>
+	<div class="form-group">
+	  <input class="form-control" placeholder="Miles..." ng-model="activeEntry.miles" type="number">
+	</div>
+  <button class="btn btn-default" type="submit" ng-click="addLog()">Save</button>
 </form>
+

@@ -16,10 +16,12 @@ angular.module('myApp.controllers', [])
       $scope.newMake = null;
       $scope.machines = syncData('users/' + $scope.auth.user.uid + '/machines');
       $scope.makes = syncData('makes');
+      $scope.machineDetailsActive = false;
       console.log($scope);
       
       $scope.edit = function(model) {
          $scope.activeModel = model;
+         $scope.machineDetailsActive = true;
          console.log($scope);
       };
       // save or update the model
@@ -30,6 +32,7 @@ angular.module('myApp.controllers', [])
                $scope.machines.$add($scope.activeModel);
             }
             $scope.activeModel = null;
+            $scope.machineDetailsActive = false;
          }
       };
       // delete a machine
