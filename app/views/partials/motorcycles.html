@@ -1,0 +1,16 @@
+<h2>Your Motorcycles</h2>
+
+<ul id="machines" ng-show="machines">
+    <li ng-repeat="machine in machines | orderByPriority">
+    	<img width="100" class="machine-img" src="images/default-mc-image.jpg">
+    	{{machine.year}} {{machine.make.name}} {{machine.model}} {{machine.miles | number}} miles <a href="" ng-click="edit(machine)">edit</a> <a ng-click="deleteMachine(machine.$id)" href="">delete</a>
+    </li>
+</ul>
+<form id="add-machine-form">
+  <input placeholder="Year" ng-model="activeModel.year">
+  <select name="make" ng-model="activeModel.make" ng-options="m.value for m in makes | orderByPriority">
+  </select>
+  <input type="text" placeholder="Model..." ng-model="activeModel.model">
+  <input type="number" placeholder="Miles..." ng-model="activeModel.miles">
+  <button type="submit" ng-click="saveModel()">Save</button>
+</form>

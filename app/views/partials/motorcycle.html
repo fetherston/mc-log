@@ -1,0 +1,29 @@
+<h2>{{machine.model}}</h2>
+<img width="100" class="machine-img" src="images/default-mc-image.jpg">
+
+
+<table class="table table-striped" ng-show="log">
+	<thead>
+		<th>Date</th>
+		<th>Task</th>
+		<th>Miles</th>
+		<th></th>
+	</thead>
+	<tbody>
+	    <tr ng-repeat="entry in log | orderByPriority | orderBy:'date':true">
+	    	<td>{{entry.date | date:'MM/dd/yyyy' }}</td>
+	    	<td>{{entry.task}}</td> 
+	    	<td>{{entry.miles | number}} miles</td>
+	    	<td>
+	    		<span ng-click="editEntry(entry)">edit</span> | <span ng-click="deleteEntry(entry.$id)">delete</span>
+	    	</td>
+	    </tr>
+	</tbody>
+</table>
+
+<form>
+  <input placeholder="Task..." ng-model="activeEntry.task" required>
+  <input placeholder="Date..." ng-model="activeEntry.date" type="date" required>
+  <input placeholder="Miles..." ng-model="activeEntry.miles" type="number">
+  <button type="submit" ng-click="addLog()">Save</button>
+</form>

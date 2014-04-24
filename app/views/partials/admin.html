@@ -1,0 +1,11 @@
+<h2>Add Makes</h2>
+<ul id="makes" ng-show="makes">
+    <li ng-repeat="make in makes | orderByPriority">
+    	{{make.name}} {{make.value}} <span ng-click="delete(make)">delete</span>
+    </li>
+</ul>
+<form>
+	<input placeholder="Add make name..." ng-model="newMake.name">
+	<input placeholder="Add make value..." ng-model="newMake.value">
+	<button type="submit" ng-click="addMake()">Save</button>
+</form>

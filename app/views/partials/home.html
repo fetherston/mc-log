@@ -1,0 +1,12 @@
+<h2>Home</h2>
+
+<p class="status good" ng-show-auth="login">Hello! You are logged in.</p>
+<p class="status" ng-show-auth="logout">Not logged in</p>
+<p class="status error" ng-show-auth="error">{{auth.error}}</p>
+
+<ul id="machines" ng-show="machines" ng-show-auth="login">
+    <li ng-repeat="machine in machines | orderByPriority">
+    	<img width="100" class="machine-img" src="images/default-mc-image.jpg">
+    	<a href="#motorcycles/{{machine.$id}}">{{machine.model}} {{machine.owner.email}}</a>
+    </li>
+</ul>
