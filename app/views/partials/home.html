@@ -7,6 +7,6 @@
 <ul id="machines" ng-show="machines" ng-show-auth="login">
     <li ng-repeat="machine in machines | orderByPriority">
     	<img width="100" class="machine-img" src="images/default-mc-image.jpg">
-    	<a href="#motorcycles/{{machine.$id}}">{{machine.model}} {{machine.owner.email}}</a>
+    	<a href="#your-machines/{{machine.$id}}">{{machine.model}} {{machine.owner.email}}</a>
     </li>
 </ul>

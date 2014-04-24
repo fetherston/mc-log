@@ -4,8 +4,7 @@ angular.module('myApp.routes', ['ngRoute'])
 
    // configure views; the authRequired parameter is used for specifying pages
    // which should only be available while logged in
-   .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-      $locationProvider.html5Mode(true);
+   .config(['$routeProvider', '$locationProvider', function($routeProvider) {
 
       $routeProvider.when('/', {
          authRequired: true, // must authenticate before viewing this page
@@ -20,13 +19,13 @@ angular.module('myApp.routes', ['ngRoute'])
          controller: 'AdminCtrl'
       });
 
-      $routeProvider.when('/motorcycles', {
+      $routeProvider.when('/your-machines', {
          authRequired: true, // must authenticate before viewing this page
          templateUrl: 'views/partials/motorcycles.html',
          controller: 'MotorcylesCtrl'
       });
 
-      $routeProvider.when('/motorcycles/:machineId', {
+      $routeProvider.when('/your-machines/:machineId', {
          authRequired: true, // must authenticate before viewing this page
          templateUrl: 'views/partials/motorcycle.html',
          controller: 'MotorcyleCtrl'
