@@ -17,19 +17,19 @@
       </div>
       <form class="form-inline" id="add-machine-form">
         <div class="modal-body">
-            <fieldset class="form-group">
+            <div class="form-group">
               <input class="form-control" placeholder="Year" ng-model="activeModel.year">
-            </fieldset>
-            <fieldset class="form-group">
-              <select class="form-control" name="make" ng-model="activeModel.make" ng-options="value.name as value.name for value in makes | orderByPriority">
+            </div>
+            <div class="form-group">
+              <select class="form-control" name="make" ng-model="activeModel.make" ng-options="value.name as value.name for value in makes | divriority">
               </select>
             </fieldset>
-            <fieldset class="form-group">
+            <div class="form-group">
               <input class="form-control" type="text" placeholder="Model..." ng-model="activeModel.model">
-            </fieldset>
-            <fieldset class="form-group">
+            </div>
+            <div class="form-group">
               <input class="form-control" type="number" placeholder="Miles..." ng-model="activeModel.miles">
-            </fieldset>          
+            </div>          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

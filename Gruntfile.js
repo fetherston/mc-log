@@ -25,8 +25,34 @@ module.exports = function (grunt) {
       dist: 'dist'
     },
 
+    // less settings
+    less: {
+      dist: {
+        files: {
+          '<%= yeoman.app %>/styles/main.css': [
+            '<%= yeoman.app %>/styles/less/app.less'
+          ],
+        },
+        options: {
+          compress: true,
+          // LESS source map
+          // To enable, set sourceMap to true and update sourceMapRootpath based on your install
+          sourceMap: false,
+          relativeUrls: true,
+          // sourceMapFilename: 'assets/css/main.min.css.map',
+          // sourceMapRootpath: '/app/themes/roots/'
+        }
+      }
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
+      less: {
+        files: [
+          '<%= yeoman.app %>/styles/less/*.less'
+        ],
+        tasks: ['less']
+      },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
