@@ -3,7 +3,7 @@
 <ul id="machines" ng-show="machines">
     <li ng-repeat="machine in machines | orderByPriority">
     	<img width="100" class="machine-img" src="images/default-mc-image.jpg">
-    	{{machine.year}} {{machine.make.name}} {{machine.model}} {{machine.miles | number}} miles <a href="" ng-click="edit(machine)" data-toggle="modal" data-target="#myModal">edit</a> <a ng-click="deleteMachine(machine.$id)" href="">delete</a>
+    	{{machine.year}} {{machine.make}} {{machine.model}} {{machine.miles | number}} miles <a href="" ng-click="edit(machine)" data-toggle="modal" data-target="#myModal">edit</a> <a ng-click="deleteMachine(machine.$id)" href="">delete</a>
     </li>
 </ul>
 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Add</button>
@@ -21,7 +21,7 @@
               <input class="form-control" placeholder="Year" ng-model="activeModel.year">
             </fieldset>
             <fieldset class="form-group">
-              <select class="form-control" name="make" ng-model="activeModel.make" ng-options="m.value for m in makes | orderByPriority">
+              <select class="form-control" name="make" ng-model="activeModel.make" ng-options="value.name as value.name for value in makes | orderByPriority">
               </select>
             </fieldset>
             <fieldset class="form-group">
