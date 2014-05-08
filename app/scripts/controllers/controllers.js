@@ -9,12 +9,10 @@ angular.module('myApp.controllers', [])
       $scope.machines = syncData('users/' + $scope.auth.user.uid + '/machines');
       $scope.makes = syncData('makes');
       $scope.machineDetailsActive = false;
-      console.log($scope);
       
       $scope.edit = function(model) {
          $scope.activeModel = model;
          $scope.machineDetailsActive = true;
-         console.log($scope);
       };
       // save or update the model
       $scope.saveModel = function() {
@@ -41,7 +39,6 @@ angular.module('myApp.controllers', [])
       $scope.machine = syncData('users/' + $scope.auth.user.uid + '/machines/' + $scope.machineId);
       $scope.log = syncData('users/' + $scope.auth.user.uid + '/machines/' + $scope.machineId + '/log');
       $scope.activeEntry = defaultValues;
-      console.log($scope);
 
       // add new log entry to the machine
       $scope.addLog = function() {
@@ -57,7 +54,6 @@ angular.module('myApp.controllers', [])
          $scope.activeEntry = model;
       };
       $scope.deleteEntry = function($id) {
-         console.log($id);
          $scope.log.$remove($id);
       };
    }])

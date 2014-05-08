@@ -1,13 +1,13 @@
-<h2>{{machine.model}}</h2>
+<h2>{{machine.year}} {{machine.make}} {{machine.model}}</h2>
 <img width="100" class="machine-img" src="images/default-mc-image.jpg">
-
-
 <table class="table table-striped" ng-show="log">
 	<thead>
 		<th>Date</th>
 		<th>Task</th>
 		<th>Miles</th>
+		<th>Parts</th>
 		<th>Labor</th>
+		<th>Total Cost</th>
 		<th></th>
 	</thead>
 	<tbody>
@@ -15,12 +15,24 @@
 	    	<td>{{entry.date | date:'MM/dd/yyyy' }}</td>
 	    	<td>{{entry.task}}</td> 
 	    	<td>{{entry.miles | number}} miles</td>
+	    	<td>{{entry.parts | currency}}</td>
 	    	<td>{{entry.labor | currency}}</td>
+	    	<td>{{entry.labor + entry.parts | currency}}</td>
 	    	<td>
 	    		<a href="" ng-click="editEntry(entry)">edit</a> | <a href="" ng-click="deleteEntry(entry.$id)">delete</a>
 	    	</td>
 	    </tr>
 	</tbody>
+	<tfoot>
+		<tr>
+			<td>Total</td>
+			<td></td>
+			<td></td>
+			<td>{{log | orderByPriority | sumByKey:'parts' | currency}}</td>
+			<td>{{log | orderByPriority | sumByKey:'labor' | currency}}</td>
+			<td>{{ (log | orderByPriority | sumByKey:'labor') + (log | orderByPriority | sumByKey:'parts') | currency}}</td>
+		</tr>
+	</tfoot>
 </table>
 
 <form class="form-inline" novalidate>
