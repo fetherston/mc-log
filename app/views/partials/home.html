@@ -7,6 +7,39 @@
 <ul id="machines" ng-show="machines" ng-show-auth="login">
     <li ng-repeat="machine in machines | orderByPriority">
     	<img width="100" class="machine-img" src="images/default-mc-image.jpg">
-    	<a href="#your-machines/{{machine.$id}}">{{machine.model}} {{machine.owner.email}}</a>
+    	<a href="#your-machines/{{machine.$id}}">{{machine.model}}</a> <a href="" ng-click="edit(machine)" data-toggle="modal" data-target="#myModal">edit</a> <a ng-click="deleteMachine(machine.$id)" href="">delete</a>
     </li>
 </ul>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Add</button>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Motorcycle details</h4>
+      </div>
+      <form class="form-inline" id="add-machine-form">
+        <div class="modal-body">
+            <div class="form-group">
+              <input class="form-control input-year" placeholder="Year" ng-model="activeModel.year">
+            </div>
+            <div class="form-group">
+              <select class="form-control input-make" name="make" ng-model="activeModel.make" ng-options="value.name as value.name for value in makes | orderByPriority">
+              </select>
+            </fieldset>
+            <div class="form-group">
+              <input class="form-control input-model" type="text" placeholder="Model..." ng-model="activeModel.model">
+            </div>
+            <div class="form-group">
+              <input class="form-control input-miles" type="number" placeholder="Miles..." ng-model="activeModel.miles">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" type="submit" data-dismiss="modal" ng-click="saveModel()">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

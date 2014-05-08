@@ -7,6 +7,7 @@
 		<th>Date</th>
 		<th>Task</th>
 		<th>Miles</th>
+		<th>Labor</th>
 		<th></th>
 	</thead>
 	<tbody>
@@ -14,6 +15,7 @@
 	    	<td>{{entry.date | date:'MM/dd/yyyy' }}</td>
 	    	<td>{{entry.task}}</td> 
 	    	<td>{{entry.miles | number}} miles</td>
+	    	<td>{{entry.labor | currency}}</td>
 	    	<td>
 	    		<a href="" ng-click="editEntry(entry)">edit</a> | <a href="" ng-click="deleteEntry(entry.$id)">delete</a>
 	    	</td>
@@ -21,7 +23,7 @@
 	</tbody>
 </table>
 
-<form class="form-inline">
+<form class="form-inline" novalidate>
   <div class="form-group">
 	  <input class="form-control" placeholder="Task..." ng-model="activeEntry.task" required>
 	</div>
@@ -31,6 +33,12 @@
 	<div class="form-group">
 	  <input class="form-control" placeholder="Miles..." ng-model="activeEntry.miles" type="number">
 	</div>
+	<div class="form-group">
+      <input class="form-control" type="number" placeholder="Parts($)..." ng-model="activeEntry.parts">
+    </div>          
+    <div class="form-group">
+      <input class="form-control" type="number" placeholder="Labor($)..." ng-model="activeEntry.labor">
+    </div> 
   <button class="btn btn-default" type="submit" ng-click="addLog()">Save</button>
 </form>
 

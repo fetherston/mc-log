@@ -4,14 +4,6 @@
 
 angular.module('myApp.controllers', [])
    .controller('HomeCtrl', ['$scope', 'syncData', function($scope, syncData) {
-      $scope.machines = syncData('users/' + $scope.auth.user.uid + '/machines');
-      console.log($scope);
-      $scope.deleteMachine = function($id) {
-         $scope.machines.$remove($id);
-      };
-   }])
-
-  .controller('MotorcylesCtrl', ['$scope' ,'syncData', '$firebaseSimpleLogin', 'FBURL', function($scope, syncData, $firebaseSimpleLogin, FBURL) {
       $scope.activeModel = null;
       $scope.newMake = null;
       $scope.machines = syncData('users/' + $scope.auth.user.uid + '/machines');

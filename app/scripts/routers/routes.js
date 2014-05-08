@@ -19,12 +19,6 @@ angular.module('myApp.routes', ['ngRoute'])
          controller: 'AdminCtrl'
       });
 
-      $routeProvider.when('/your-machines', {
-         authRequired: true, // must authenticate before viewing this page
-         templateUrl: 'views/partials/motorcycles.html',
-         controller: 'MotorcylesCtrl'
-      });
-
       $routeProvider.when('/your-machines/:machineId', {
          authRequired: true, // must authenticate before viewing this page
          templateUrl: 'views/partials/motorcycle.html',
