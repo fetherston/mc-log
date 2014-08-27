@@ -74,26 +74,26 @@ angular.module('myApp.controllers', [])
 			date: new Date().toISOString().slice(0,10).replace(/-/g, '-')
 		};
 		$scope.machineId = $routeParams.machineId;
-		$scope.machine = syncData('users/' + $scope.auth.user.uid + '/machines/' + $scope.machineId);
-		$scope.log = syncData('users/' + $scope.auth.user.uid + '/machines/' + $scope.machineId + '/log');
+		$scope.machine = syncData('users/' + $scope.auth.user.uid + '/machines/' + $scope.machineId).$asObject();
+		$scope.log = syncData('users/' + $scope.auth.user.uid + '/machines/' + $scope.machineId + '/log').$asArray();
 		$scope.activeEntry = defaultValues;
-		$scope.awesomeThings = [0,1,2];
 
 		// add new log entry to the machine
 		$scope.addLog = function() {
 			if($scope.activeEntry.task) {
-				if ($scope.activeEntry.$id) $scope.log.$save($scope.activeEntry.$id);
+				if ($scope.activeEntry.$id) $scope.log.$save($scope.activeEntry);
 				else {
 					$scope.log.$add($scope.activeEntry);
 				}
 				$scope.activeEntry = defaultValues;
 			}
 		};
-		$scope.editEntry = function(model) {
-			$scope.activeEntry = model;
+		$scope.editEntry = function(entry) {
+			$scope.activeEntry = entry;
 		};
-		$scope.deleteEntry = function($id) {
-			$scope.log.$remove($id);
+		$scope.deleteEntry = function(entry) {
+			console.log(entry);
+			$scope.log.$remove(entry);
 		};
 	}])
 
@@ -156,7 +156,7 @@ angular.module('myApp.controllers', [])
 	.controller('AccountCtrl', ['$scope', 'loginService', 'changeEmailService', 'firebaseRef', 'syncData', function($scope, loginService, changeEmailService, firebaseRef, syncData) {
 		$scope.syncAccount = function() {
 			$scope.user = {};
-			syncData(['users', $scope.auth.user.uid]).$bind($scope, 'user').then(function(unBind) {
+			syncData(['users', $scope.auth.user.uid]).$asObject().$bindTo($scope, 'user').then(function(unBind) {
 				$scope.unBindAccount = unBind;
 			});
 		};
