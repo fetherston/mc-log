@@ -1,23 +1,44 @@
-<h2>Home</h2>
-
+<!-- <h2>Home</h2> -->
+<!-- 
 <p class="status good" ng-show-auth="login">Hello! You are logged in.</p>
 <p class="status" ng-show-auth="logout">Not logged in</p>
-<p class="status error" ng-show-auth="error">{{auth.error}}</p>
+<p class="status error" ng-show-auth="error">{{auth.error}}</p> -->
 
-<ul id="machines" ng-show="machines" ng-show-auth="login">
-    <li ng-repeat="machine in machines | orderByPriority">
-    	<img width="100" class="machine-img" src="images/default-mc-image.jpg">
-    	<a href="#your-machines/{{machine.$id}}">{{machine.model}}</a> <a href="" ng-click="edit(machine)" data-toggle="modal" data-target="#myModal">edit</a> <a ng-click="deleteMachine(machine.$id)" href="">delete</a>
+<ul id="machines" class="machine-list" ng-show="machines.length" ng-show-auth="login">
+    <li ng-repeat="machine in machines" class="machine">
+      <a href="#your-machines/{{machine.$id}}">
+        <h2>{{machine.make}} {{machine.model}}</h2>
+      	<img height="100" ng-hide="machine.img" class="machine-img" src="images/default-mc-image.jpg">
+        <img height="100" ng-show="machine.img" class="machine-img" fb-src="machine.img">
+      </a>
+      <div class="machine-options">
+        <a href="" ng-click="edit(machine)" data-toggle="modal" data-target="#machine-detail-modal">edit</a> 
+        <a ng-click="confirmDelete(machine.$id)" href="" data-toggle="modal" data-target="#confirm-delete-modal">delete</a>
+      </div>
     </li>
 </ul>
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Add</button>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#machine-detail-modal">Add</button>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="machine-detail-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Motorcycle details</h4>
+      </div>
+      <div class="fb-image-upload">
+        <form ng-submit="uploadImage(image)">
+          <div class="fb-error" ng-show="error">{{error}}</div>
+          <div class="fb-status" ng-show="status">{{status}}</div>
+          <div class="fb-img" ng-show="activeModel.img"><img fb-src="activeModel.img"></div>
+          <div class="fb-inputs" ng-hide="image.isUploading">
+            <input class="fb-image-upload" fb-image-upload class="fb-input" type="file" name="image">
+            <input class="fb-submit" type="submit" value="Upload Image" ng-show="image.valid">
+          </div>
+          <div class="fb-uploading" ng-show="image.isUploading">
+            Uploading...
+          </div>
+        </form>
       </div>
       <form class="form-inline" id="add-machine-form">
         <div class="modal-body">
@@ -25,9 +46,9 @@
               <input class="form-control input-year" placeholder="Year" ng-model="activeModel.year">
             </div>
             <div class="form-group">
-              <select class="form-control input-make" name="make" ng-model="activeModel.make" ng-options="value.name as value.name for value in makes | orderByPriority">
+              <select class="form-control input-make" name="make" ng-model="activeModel.make" ng-options="value.name as value.name for value in makes">
               </select>
-            </fieldset>
+            </div>
             <div class="form-group">
               <input class="form-control input-model" type="text" placeholder="Model..." ng-model="activeModel.model">
             </div>
@@ -43,3 +64,23 @@
     </div>
   </div>
 </div>
+`
+
+<div class="modal fade" id="confirm-delete-modal" tabindex="-1" role="dialog" aria-labelledby="confirm-delete-modal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Are you sure you would like to delete this machine?</h4>
+      </div>
+      <div class="modal-body">
+        <p>All records and service history will be lost.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button class="btn btn-primary" type="submit" data-dismiss="modal" ng-click="deleteModel()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
