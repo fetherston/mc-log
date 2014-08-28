@@ -1,25 +1,30 @@
 @import "_bootstrap-includes";
 @import "_bootstrap-overrides-variables";
 @import "assets/_forms";
+@footer-height: 20px;
+@header-height: 50px;
 html {
   position: relative;
   min-height: 100%;
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  background: #1f2227 url('../images/bkg.jpg') repeat;
+  margin-bottom: @footer-height;
 }
 #main-footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
+  height: @footer-height;
+  background-color: #222;
 }
 
 #main-container{
-  margin-top: 50px;
+  margin-top: @header-height;
+  background-color: #fff;
+  padding-bottom: 5em;
 }
 
 #login-form{
@@ -36,6 +41,7 @@ tfoot{
 .machine-list{
   text-align: center;
   list-style-type: none;
+  padding: 0;
   .clearfix();
   .machine{
     display: inline-block;

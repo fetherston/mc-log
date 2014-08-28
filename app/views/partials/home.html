@@ -13,11 +13,14 @@
       </a>
       <div class="machine-options">
         <a href="" ng-click="edit(machine)" data-toggle="modal" data-target="#machine-detail-modal">edit</a> 
-        <a ng-click="confirmDelete(machine.$id)" href="" data-toggle="modal" data-target="#confirm-delete-modal">delete</a>
+        <a ng-click="confirmDelete(machine)" href="" data-toggle="modal" data-target="#confirm-delete-modal">delete</a>
       </div>
     </li>
+    <li>
+      <button type="button" class="btn btn-default" data-toggle="modal" ng-click="addNew" data-target="#machine-detail-modal">Add</button>
+    </li>
 </ul>
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#machine-detail-modal">Add</button>
+
 
 <div class="modal fade" id="machine-detail-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

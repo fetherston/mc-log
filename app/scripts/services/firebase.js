@@ -9,7 +9,7 @@ function pathRef(args) {
 	return args.join('/');
 }
 
-angular.module('myApp.service.firebase', ['firebase'])
+angular.module('mcLog.service.firebase', ['firebase'])
 
 	// a simple utility to create references to Firebase paths
 	.factory('firebaseRef', ['Firebase', 'FBURL', function(Firebase, FBURL) {

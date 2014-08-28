@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.service.login', ['firebase', 'myApp.service.firebase'])
+angular.module('mcLog.service.login', ['firebase', 'mcLog.service.firebase'])
 
 	.factory('loginService', ['$rootScope', '$firebaseSimpleLogin', 'firebaseRef', 'profileCreator', '$timeout',
 		function($rootScope, $firebaseSimpleLogin, firebaseRef, profileCreator, $timeout) {

@@ -11,6 +11,7 @@
 
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
@@ -29,13 +30,13 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Log</a>
+            <a class="navbar-brand" href="#">Maintenance Log</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li><a href="#">Your Machines</a></li>
               <li ng-show-auth="['logout','error']"><a href="#login">login</a></li>
-              <li ng-show-auth="'login'"><a href="#account">account</a></li>
+              <li ng-show-auth="'login'"><a href="#account">Account</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -89,6 +90,7 @@
         <script src="scripts/angularfire/routesecurity.js"></script>
 
         <script src="scripts/controllers/controllers.js"></script>
+        <script src="scripts/controllers/account.js"></script>
         <script src="scripts/controllers/admin.js"></script>
         <script src="scripts/directives/directives.js"></script>
         <script src="scripts/filters/filters.js"></script>

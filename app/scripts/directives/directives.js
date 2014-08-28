@@ -3,7 +3,7 @@
 /* Directives */
 
 
-angular.module('myApp.directives', []).
+angular.module('mcLog.directives', []).
 	directive('appVersion', ['version', function(version) {
 		return function(scope, elm) {
 			elm.text(version);

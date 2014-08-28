@@ -1,7 +1,7 @@
 <h2>{{machine.year}} {{machine.make}} {{machine.model}}</h2>
 <img height="100" ng-hide="machine.img" class="machine-img" src="images/default-mc-image.jpg">
 <img height="100" ng-show="machine.img" class="machine-img" fb-src="machine.img">
-<table class="table table-striped" ng-show="log.length">
+<table class="table table-striped">
 	<thead>
 		<th>Date</th>
 		<th>Task</th>
@@ -23,8 +23,11 @@
 	    		<a href="" ng-click="editEntry(entry)">edit</a> | <a href="" ng-click="deleteEntry(entry)">delete</a>
 	    	</td>
 	    </tr>
+	    <tr ng-show="!log.length">
+	    	<td colspan="7">No maintenance entries yet.</td>
+	    </tr>
 	</tbody>
-	<tfoot>
+	<tfoot ng-show="log.length">
 		<tr>
 			<td>Total</td>
 			<td></td>

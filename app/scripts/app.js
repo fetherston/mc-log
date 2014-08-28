@@ -2,8 +2,17 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('myApp',
-		['myApp.config', 'myApp.routes', 'myApp.filters', 'myApp.services', 'myApp.directives', 'myApp.controllers', 'myApp.controllers.admin',
-			'simpleLoginTools', 'routeSecurity']
+		[
+			'mcLog.config', 
+			'mcLog.routes', 
+			'mcLog.filters', 
+			'mcLog.services', 
+			'mcLog.directives', 
+			'mcLog.controllers', 
+			'mcLog.controllers.admin',
+			'mcLog.controllers.account',
+			'simpleLoginTools', 
+			'routeSecurity']
 	)
 
 	.run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootScope, FBURL) {

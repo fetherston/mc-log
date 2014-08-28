@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers.admin', [])
+angular.module('mcLog.controllers.admin', [])
 
 	.controller('AdminCtrl', ['$scope' ,'syncData', function($scope, syncData) {
 		$scope.newMake = null;

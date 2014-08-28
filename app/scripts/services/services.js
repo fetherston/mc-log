@@ -3,7 +3,7 @@
 
    /* Services */
 
-	angular.module('myApp.services', ['myApp.service.login', 'myApp.service.firebase', 'myApp.service.changeEmail']);
+	angular.module('mcLog.services', ['mcLog.service.login', 'mcLog.service.firebase', 'mcLog.service.changeEmail']);
 
 		// put your services here!
 		// .service('serviceName', ['dependency', function(dependency) {}]);
