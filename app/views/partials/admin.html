@@ -1,9 +1,16 @@
 <h2>Add Makes</h2>
-<ul id="makes" ng-show="makes">
-    <li ng-repeat="make in makes | orderByPriority">
-    	{{make.name}} {{make.value}} <span ng-click="delete(make)">delete</span>
-    </li>
-</ul>
+<table class="table">
+	<thead>
+		<th>Name</th>
+		<th>Value</th>
+		<th></th>
+	</thead>
+	<tr ng-repeat="make in makes">
+		<td>{{make.name}}</td>
+		<td>{{make.value}}</td>
+		<td><button type="button" class="btn btn-default" ng-click="delete(make)">Delete</button></td>
+	</tr>
+</table>
 <form>
 	<input placeholder="Add make name..." ng-model="newMake.name">
 	<input placeholder="Add make value..." ng-model="newMake.value">
