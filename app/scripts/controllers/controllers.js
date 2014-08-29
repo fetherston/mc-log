@@ -78,7 +78,7 @@ angular.module('mcLog.controllers', [])
 		$scope.machineId = $routeParams.machineId;
 		$scope.machine = syncData('users/' + $scope.auth.user.uid + '/machines/' + $scope.machineId).$asObject();
 		$scope.log = syncData('users/' + $scope.auth.user.uid + '/machines/' + $scope.machineId + '/log').$asArray();
-		$scope.activeEntry = defaultValues;
+		$scope.activeEntry = angular.copy(defaultValues);
 
 		// add new log entry to the machine
 		$scope.addLog = function() {
@@ -87,7 +87,7 @@ angular.module('mcLog.controllers', [])
 				else {
 					$scope.log.$add($scope.activeEntry);
 				}
-				$scope.activeEntry = defaultValues;
+				$scope.activeEntry = angular.copy(defaultValues);
 			}
 		};
 		$scope.editEntry = function(entry) {

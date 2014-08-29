@@ -9,7 +9,6 @@
 		}]);
 
 	function RouteSecurityManager($location, $rootScope, $route, path) {
-		console.log(this, arguments);
 		this._route = $route;
 		this._location = $location;
 		this._rootScope = $rootScope;
